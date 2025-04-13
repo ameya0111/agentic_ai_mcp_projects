@@ -1,0 +1,25 @@
+{
+  "name": "LightAgentIDE",
+  "description": "A lightweight, minimalist coding environment with terminal, editor and AI agent assistance",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "LightAgentIDE - Minimal Coding Environment"
+  },
+  "permissions": [
+    "storage",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "https://pythontutor.com/*",
+    "https://replit.com/*",
+    "https://api.replit.com/*",
+    "https://api.jdoodle.com/*"
+  ],
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+} 

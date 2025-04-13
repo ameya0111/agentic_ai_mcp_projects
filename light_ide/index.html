@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LightAgentIDE: A lightweight, minimalist coding environment with terminal, editor, and AI agent - all in your browser">
+  <title>LightAgentIDE</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="jszip.min.js"></script>
+</head>
+<body>
+  <script>
+    // Apply side panel class if in side panel context
+    if (window.innerWidth <= 400 || window.location.search.includes('sidepanel')) {
+      document.body.classList.add('side-panel');
+    }
+  </script>
+  <div class="container">
+    <div class="tabs">
+      <h1 class="logo">LightAgentIDE</h1>
+      <button class="tab-btn active" data-tab="terminal">Terminal</button>
+      <button class="tab-btn" data-tab="editor">Editor</button>
+      <button class="tab-btn" data-tab="files">Files</button>
+      <button class="tab-btn" data-tab="chat">AI Chat</button>
+    </div>
+    
+    <div class="tab-content active" id="terminal">
+      <div class="terminal-container">
+        <div class="terminal-output" id="terminal-output"></div>
+        <div class="terminal-input-line">
+          <span class="prompt">$ </span>
+          <input type="text" id="terminal-input" autofocus />
+        </div>
+      </div>
+    </div>
+    
+    <div class="tab-content" id="editor">
+      <div class="editor-header">
+        <input type="text" id="file-name" placeholder="Filename" />
+        <button id="save-file">Save</button>
+      </div>
+      <textarea id="file-content"></textarea>
+    </div>
+    
+    <div class="tab-content" id="files">
+      <div class="file-actions">
+        <button id="export-files">Export All Files (ZIP)</button>
+        <button id="export-selected-files">Export Selected Files</button>
+        <label for="import-files" class="button">Import Files</label>
+        <input type="file" id="import-files" accept=".zip,.json" style="display: none;" />
+        <button id="delete-all-files" class="danger-button">Delete All Files</button>
+      </div>
+      <div class="file-list-container">
+        <div class="file-list-header">
+          <h3>Files</h3>
+          <label class="select-all-container">
+            <input type="checkbox" id="select-all-files">
+            <span>Select All</span>
+          </label>
+        </div>
+        <ul id="file-list"></ul>
+      </div>
+    </div>
+
+    <div class="tab-content" id="chat">
+      <div class="chat-container">
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-input-container">
+          <textarea id="chat-input" placeholder="Ask me anything about your files or request changes..." rows="3"></textarea>
+          <button id="send-chat">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="fileSystem.js"></script>
+  <script src="terminal.js"></script>
+  <script src="editor.js"></script>
+  <script src="gemini.js"></script>
+  <script src="chat.js"></script>
+  <script src="pythonService.js"></script>
+  <script src="main.js"></script>
+</body>
+</html> 
